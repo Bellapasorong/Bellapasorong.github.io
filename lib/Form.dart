@@ -28,55 +28,66 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget build(BuildContext context) {
+    var snackBar = const SnackBar(
+      content: Text(
+        "Orderan telah di Submit",
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      duration: Duration(seconds: 5),
+      backgroundColor: Color.fromARGB(255, 132, 32, 112),
+      padding: EdgeInsets.all(15),
+    );
     return Scaffold(
       backgroundColor: Color(0xFFB667F1),
       appBar: AppBar(
-        title: Text("151_Hilary"),
+        title: Text("BTS Merch App"),
         backgroundColor: Color(0xFFFA4EAB),
       ),
-    
       body: ListView(
         children: [
-          
           Column(
             children: [
- 
-                
-              
               Text(
                 'BTS Merchandise',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
-                  color: Colors.yellow,
+                  color: Color.fromARGB(255, 231, 223, 229),
                   height: 2,
                 ),
               ),
-             
-              
-          
-              SizedBox(height: 20),
+              SizedBox(height: 50),
               TextFormField(
                 controller: controlerBelakang,
                 decoration: InputDecoration(
-                  labelText: "Masukkan Nama Depan",
+                  labelText: "Input Nama",
                   border: OutlineInputBorder(),
                 ),
               ),
-               Container(
-              
+              Container(
                 child: TextField(
                   controller: controlerDepan,
                   decoration: InputDecoration(
-                    hintText: "Masukkan Nama Belakang",
+                    hintText: "Input No. WhatsApp",
                     border: OutlineInputBorder(),
-                    
                   ),
                 ),
-                
-                
               ),
-
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                child: Text("Silahkan di Order :"),
+                height: 30,
+              ),
+              Text(
+                "(Note : Kami akan menghubungi Anda, Thanks)",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+              ),
               for (var item in hobi)
                 Row(
                   children: [
@@ -90,10 +101,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         }),
                     Text(item),
                   ],
-                  
                 ),
+              SizedBox(
+                height: 30,
+              ),
               ElevatedButton(
                 onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
                   setState(() {
                     namaDepan = controlerDepan.text;
                     namaBelakang = controlerBelakang.text;
@@ -102,12 +117,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("Submit"),
               ),
+              SizedBox(
+                height: 30,
+              ),
               Text("Nama Depan Anda    : $namaBelakang"),
               Text("Nama Belakang Anda : $namaDepan"),
               Text("Orderan Anda  : $hobiGroup"),
             ],
           )
-          
         ],
       ),
     );

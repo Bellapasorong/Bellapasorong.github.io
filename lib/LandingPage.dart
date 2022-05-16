@@ -9,21 +9,26 @@ class MyLanding extends StatelessWidget {
   Widget build(BuildContext context) {
     var lebar = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(title: Text("Postest4 Hillary"),),
-      backgroundColor: Color(0xFF8A39E1),
+      appBar: AppBar(
+        title: Text("BTS Merch App"),
+      ),
+      backgroundColor: Color(0xFFA63EC5),
       body: ListView(
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: 200,
+                alignment: Alignment.center,
+                width: 400,
                 height: 300,
                 margin: EdgeInsets.only(top: 50),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/bangtan.jpg"),
-                  ),
+                      image: AssetImage("assets/members.jpg"),
+                      fit: BoxFit.cover),
+                ),
+                child: Scaffold(
+                  backgroundColor: Colors.transparent,
                 ),
               ),
               Text(
@@ -31,19 +36,9 @@ class MyLanding extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFF0A500),
+                  color: Color(0xFFE9D5DA),
                   height: 2,
                   //backgroundColor: Colors.black,
-                ),
-              ),
-              Text(
-                "BTS Merch bring joy and admiration as a fanbase",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  height: 2.0,
-                  // letterSpacing: 1,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
@@ -61,7 +56,7 @@ class MyLanding extends StatelessWidget {
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
               ),
               Text(
-                "BTS (Korean: 방탄소년단; RR: Bangtan Sonyeondan), also known as the Bangtan Boys, is a South Korean boy band that was formed in 2010 and debuted in 2013 under Big Hit Entertainment. The septet—consisting of members Jin, Suga, J-Hope, RM, Jimin, V, and Jungkook—co-writes and co-produces much of their own output. Originally a hip hop group, their musical style has evolved to include a wide range of genres. Their lyrics, often focused on personal and social commentary, touch on the themes of mental health, troubles of school-age youth and coming of age, loss, the journey towards loving oneself, and individualism. Their work also often references literature and psychological concepts and includes an alternative universe storyline.",
+                "BTS (Korean: 방탄소년단; RR: Bangtan Sonyeondan), also known as the Bangtan Boys, is a South Korean boy band that was formed in 2010 and debuted in 2013 under Big Hit Entertainment. The septet—consisting of members Jin, Suga, J-Hope, RM, Jimin, V, and Jungkook—co-writes and co-produces.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   height: 2.0,
@@ -71,40 +66,43 @@ class MyLanding extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 50,
-                width: 50,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   SizeContainer(
                     isActive: true,
-                    size: "accessories",
+                    size: "Accessories",
                   ),
-                  SizeContainer(isActive: true, size: "hoodie"),
-                  SizeContainer(isActive: true, size: "room decor"),
+                  SizeContainer(isActive: true, size: "Hoodie"),
+                  SizeContainer(isActive: true, size: "Room decor"),
                 ],
               ),
-              ElevatedButton(child: Text("Halaman Selanjutnya"), onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_){
-                  return MyMain();
-                }));
-              },)
+              ElevatedButton(
+                child: Text("Halaman Selanjutnya"),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return MyMain();
+                  }));
+                },
+              )
             ],
           ),
         ],
       ),
       drawer: Drawer(
+        backgroundColor: Color(0xFFFFE59D),
         child: ListView(
           children: [
-            DrawerHeader(child: Text("Tombol Menu"),
-            decoration: BoxDecoration(
-              color: Colors.amber
-            ),),
+            DrawerHeader(
+              child: Text("Tombol Menu"),
+              decoration: BoxDecoration(color: Color(0xFFBDE6F1)),
+            ),
             ListTile(
               title: Text("Pindah ke halaman form"),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_){
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) {
                   return MyHomePage();
                 }));
               },
@@ -127,20 +125,20 @@ class SizeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 100,
-      height: 500,
+      height: 300,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/logo.jpg"),
+          image: AssetImage("assets/icon2.png"),
         ),
       ),
       child: Text(
         size,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: 10,
           height: 20,
           fontWeight: FontWeight.bold,
-          color: isActive ? Colors.white : Color(0xFFFFBDE6),
+          color: isActive ? Color(0xFF15133C) : Color(0xFFFFBDE6),
         ),
       ),
     );
@@ -163,16 +161,6 @@ class MyButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(offset: Offset(0, 4), blurRadius: 5),
           ]),
-      child: Text(
-        "Login >>",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
-          letterSpacing: 2,
-        ),
-        textAlign: TextAlign.center,
-      ),
     );
   }
 }
